@@ -1,0 +1,23 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.television{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: brown;
+    width: 200px;
+    height: 150px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.screen{
+    background: cornsilk;
+    width: 180px;
+    height: 130px;
+    vertical-align: middle;
+
+}
