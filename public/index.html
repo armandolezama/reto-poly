@@ -8,26 +8,59 @@
 <body>
     <h1>Televisiones</h1>
 
-    <article>
-        <div class="television">
-            <div class="screen"></div>
-        </div>
+    <section class="main-container">
 
-        <div class="control">
-            <p>Aquí se encuentra el control para que cambie de canal</p>
-            <form id="" action="">
-                <input class="manualChn" id="" type="text" name="manualChn" value="" placeholder="Inserte el canal que desee sintonizar">
-                <!-- <label for=""></label> -->
-            </form>
-
-            <button>Apagar</button>
-            <button>Encender</button>
-            <button onclick="firstTV.plusChannel()" class="plusBtn">+</button>
-            <button onclick="firstTV.lessChannel()"class="lessBtn">-</button>
-        </div>
-    </article>
-
-
+        <article class="tv-container">
+            <div id="first-tv" class="television">
+                <div id="first-screen" class="screen"><p class="ch-content">Apagado</p></div>
+            </div>
+    
+            <div class="control">
+                <p>Aquí se encuentra el control para que cambie de canal</p>
+                <input id="first-manual" class="manualChn" id="" type="number" name="manualChn" value="" placeholder="Inserte el canal que desee sintonizar">
+                <button onclick="firstTV.manualChannel()">Cambiar canal</button>
+    
+                <button onclick="firstTV.turnOff()">Apagar</button>
+                <button onclick="firstTV.turnOn()">Encender</button>
+                <button onclick="firstTV.plusChannel()" class="plusBtn">+</button>
+                <button onclick="firstTV.lessChannel()"class="lessBtn">-</button>
+            </div>
+        </article>
+    
+        <article class="tv-container">
+            <div id="second-tv" class="television">
+                <div id="second-screen" class="screen"><p>Apagado</p></div>
+            </div>
+        
+            <div class="control">
+                <p>Aquí se encuentra el control para que cambie de canal</p>
+                <input id="second-manual" class="manualChn" id="" type="number" name="manualChn" value="" placeholder="Inserte el canal que desee sintonizar">
+                <button onclick="secondTV.manualChannel()">Cambiar canal</button>
+    
+                <button onclick="secondTV.turnOff()">Apagar</button>
+                <button onclick="secondTV.turnOn()">Encender</button>
+                <button onclick="secondTV.plusChannel()" class="plusBtn">+</button>
+                <button onclick="secondTV.lessChannel()"class="lessBtn">-</button>
+            </div>
+        </article>
+    
+        <article class="tv-container">
+            <div id="third-tv" class="television">
+                <div id="third-screen" class="screen"><p>Apagado</p></div>
+            </div>
+        
+            <div class="control">
+                <p>Aquí se encuentra el control para que cambie de canal</p>
+                <input id="third-manual" class="manualChn" id="" type="number" name="manualChn" value="" placeholder="Inserte el canal que desee sintonizar">
+                <button onclick="thirdTV.manualChannel()">Cambiar canal</button>
+                
+                <button onclick="thirdTV.turnOff()">Apagar</button>
+                <button onclick="thirdTV.turnOn()">Encender</button>
+                <button onclick="thirdTV.plusChannel()" class="plusBtn">+</button>
+                <button onclick="thirdTV.lessChannel()"class="lessBtn">-</button>
+            </div>
+            </article>
+    </section>
     <script src="script.js"></script>
 </body>
 </html>
