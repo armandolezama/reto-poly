@@ -10,8 +10,8 @@
 
 .tv-container{
     display: inline-flex;
-    width: 270px;
-    height: 400px;
+    width: 370px;
+    height: 500px;
     flex-flow: column;
 }
 
@@ -20,24 +20,25 @@
     align-items: center;
     justify-content: center;
     background: brown;
-    width: 200px;
-    height: 150px;
-    padding: 10px;
+    width: 300px;
+    height: 250px;
+    padding: 15px;
     margin: 10px;
+    border-radius: 10px;
 }
 
 .screen{
     background: cornsilk;
-    width: 180px;
-    height: 130px;
+    width: 280px;
+    height: 230px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .control{
-    width: 200px;
-    height: 150px;
+    width: 300px;
+    height: 2300px;
     padding: 10px;
     margin: 10px;
 }
