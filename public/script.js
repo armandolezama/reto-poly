@@ -126,18 +126,41 @@ function addTelevision(){
         tvCollection[tvName].lessChannel()})
 }
 
-Television2.prototype = new Television()
+Television1Dot5.prototype = new Television()
 
-function Television2(){
+function Television1Dot5(){
+    // super(model, manualCh, limit = 20, channel = 1)
 
-    this.putMovie = function(movie){
-        this.movie = movie
-    }
+    this.movie = '';
     this.playMovie = ()=>{
         this.model.innerHTML = `
     <div class="screen">
         <p class="ch-content">${this.movie}</p>
     </div>`
+    }
+}
+
+class Television2 extends Television{
+    constructor(model, manualCh, vidScn, limit = 20, channel = 1){
+        super()
+        this.model = document.getElementById(model)
+        this.manualCh = document.getElementById(manualCh)
+        this.vidScn = document.getElementById(vidScn)
+        this.turned = false
+        this.channel = channel
+        this.limit = limit
+        this.movie
+    }
+    
+    playMovie(){
+        if(this.turned){
+            this.movie = this.vidScn.value
+            this.model.innerHTML = `
+            <div class="screen">
+                <p class="ch-content">${this.movie}</p>
+            </div>`
+
+        }
     }
 }
 
@@ -159,7 +182,12 @@ function addTelevision2(){
                 <input id="manual-number-${numberofTv}" class="manualChn" id="" type="number" name="manualChn" value="" placeholder="Inserte el canal que desee sintonizar">
                 <button id="manual-in-${numberofTv}" >Cambiar canal</button>
             </div>
-            
+
+            <div>
+                <input id="manual-vid-${numberofTv}" class="manualChn" id="" type="text" name="manualChn" value="" placeholder="Inserte el canal que desee sintonizar">
+                <button id="manual-vid-in-${numberofTv}" >Ver película</button>
+            </div>
+
             <div>
                 <button id="off-${numberofTv}" class="off-btn">Apagar</button>
                 <button id="on-${numberofTv}" class="on-btn">Encender</button>
@@ -169,7 +197,7 @@ function addTelevision2(){
         </div>
     </article>`)
     
-    tvCollection[tvName] = new Television (`tv-number-${numberofTv}`, `manual-number-${numberofTv}`)
+    tvCollection[tvName] = new Television2 (`tv-number-${numberofTv}`, `manual-number-${numberofTv}`,`manual-vid-${numberofTv}`)
 
     document.getElementById(`manual-in-${numberofTv}`).addEventListener('click', ()=>{
         tvCollection[tvName].manualChannel()})
@@ -185,8 +213,9 @@ function addTelevision2(){
 
     document.getElementById(`less-${numberofTv}`).addEventListener('click', ()=>{
         tvCollection[tvName].lessChannel()})
+    
+    document.getElementById(`manual-vid-in-${numberofTv}`).addEventListener('click', ()=>{
+        tvCollection[tvName].playMovie()})
 }
 
-let newModel = new Television2 ()
-
-newModel.putMovie('los vengadores')
+addTelevision2()
