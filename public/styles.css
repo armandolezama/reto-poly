@@ -38,7 +38,42 @@ body, .main-container{
 
 .control{
     width: 300px;
-    height: 2300px;
+    height: 230px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.tv-container2{
+    display: inline-flex;
+    width: 420px;
+    height: 500px;
+    flex-flow: column;
+}
+
+.television2{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: gray;
+    width: 350px;
+    height: 250px;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.screen2{
+    background: cornsilk;
+    width: 330px;
+    height: 230px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.control2{
+    width: 350px;
+    height: 230px;
     padding: 10px;
     margin: 10px;
 }

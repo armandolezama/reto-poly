@@ -80,6 +80,8 @@ let firstTV = new Television ('first-tv', 'first-manual')
 let secondTV = new Television ('second-tv', 'second-manual')
 let thirdTV = new Television ('third-tv', 'third-manual')
 
+//La siguiente función tiene como finalidad repetir la creación de televisiones y conectarlas inmediatamente con su nodo correspondiente
+//en HTML. Se utiliza la misma clase por lo que se recicla mucho código.
 function addTelevision(){
 
     let numberofTv = Object.keys(tvCollection).length + 1;
@@ -95,7 +97,7 @@ function addTelevision(){
             <p>Aquí se encuentra el control para que cambie de canal</p>
 
             <div>
-                <input id="manual-number-${numberofTv}" class="manualChn" id="" type="number" name="manualChn" value="" placeholder="Inserte el canal que desee sintonizar">
+                <input id="manual-number-${numberofTv}" class="manualChn" id="" type="number" name="manualChn" value="" placeholder="Inserte el canal que desee sintonizar" required>
                 <button id="manual-in-${numberofTv}" >Cambiar canal</button>
             </div>
             
@@ -126,20 +128,9 @@ function addTelevision(){
         tvCollection[tvName].lessChannel()})
 }
 
-Television1Dot5.prototype = new Television()
-
-function Television1Dot5(){
-    // super(model, manualCh, limit = 20, channel = 1)
-
-    this.movie = '';
-    this.playMovie = ()=>{
-        this.model.innerHTML = `
-    <div class="screen">
-        <p class="ch-content">${this.movie}</p>
-    </div>`
-    }
-}
-
+//Para hacer un ejemplo práctico del concepto de herencia en POO se genera una nueva versión de Television.
+//Esta segunda clase aprovecha los atributos y los métodos de la anterior clase, y añade un nuevo método.
+//Este nuevo método permite añadir una "película" al televisor.
 class Television2 extends Television{
     constructor(model, manualCh, vidScn, limit = 20, channel = 1){
         super()
@@ -156,35 +147,48 @@ class Television2 extends Television{
         if(this.turned){
             this.movie = this.vidScn.value
             this.model.innerHTML = `
-            <div class="screen">
+            <div class="screen2">
                 <p class="ch-content">${this.movie}</p>
             </div>`
 
         }
     }
+
+    theChannel(){
+        this.model.innerHTML = `
+        <div class="screen2">
+            <p class="ch-content">${this.channel}</p>
+        </div>`
+    }
+
+    turnOff(){
+        this.turned = false
+        this.model.innerHTML = `<div class="screen2"><p class="ch-content">Apagado</p></div>`
+    }
 }
 
+//Se tiene que reescribir la función addTelevision para volver compatible el nodo html de la nueva televisión con su clase.
 function addTelevision2(){
 
     let numberofTv = Object.keys(tvCollection).length + 1;
     let tvName = `tvNumber${numberofTv}`;
     
     mainContainer.insertAdjacentHTML('beforeend',  
-    `<article class="tv-container">
-        <div id="tv-number-${numberofTv}" class="television">
-            <div id="screen-number-${numberofTv}" class="screen"><p class="ch-content">Apagado</p></div>
+    `<article class="tv-container2">
+        <div id="tv-number-${numberofTv}" class="television2">
+            <div id="screen-number-${numberofTv}" class="screen2"><p class="ch-content">Apagado</p></div>
         </div>
         
-        <div class="control">
+        <div class="control2">
             <p>Aquí se encuentra el control para que cambie de canal</p>
 
             <div>
-                <input id="manual-number-${numberofTv}" class="manualChn" id="" type="number" name="manualChn" value="" placeholder="Inserte el canal que desee sintonizar">
+                <input id="manual-number-${numberofTv}" class="manualChn" id="" type="number" name="manualChn" value="" placeholder="Inserte el canal que desee sintonizar" required>
                 <button id="manual-in-${numberofTv}" >Cambiar canal</button>
             </div>
 
             <div>
-                <input id="manual-vid-${numberofTv}" class="manualChn" id="" type="text" name="manualChn" value="" placeholder="Inserte el canal que desee sintonizar">
+                <input id="manual-vid-${numberofTv}" class="manualChn" id="" type="text" name="manualChn" value="" placeholder="¿Qué película desea ver" required>
                 <button id="manual-vid-in-${numberofTv}" >Ver película</button>
             </div>
 
@@ -218,4 +222,3 @@ function addTelevision2(){
         tvCollection[tvName].playMovie()})
 }
 
-addTelevision2()
